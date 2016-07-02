@@ -1,4 +1,4 @@
-SUBDIRS=net json entity
+SUBDIRS=net json entity algorithm driver
 export CC INCLUDE OBJS_DIR
 
 all:$(SUBDIRS)

@@ -12,18 +12,18 @@ Server::Server()
 {
 	this->m_post = 4999;
 	this->m_client_num = 10;
+	this->m_listenfd = -1;
 	createSocket();
 	initFdSet();
+	
 }
 
 Server::~Server()
 {
-	for(int i=0;i<m_client_num;++i)
+	if (m_listenfd!=-1)
 	{
-		close(m_cfd[i]);
+		close(m_listenfd);
 	}
-	//delete m_buff;
-	//delete m_cfd;
 }
 
 void Server::createSocket()
