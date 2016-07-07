@@ -5,7 +5,7 @@ class SoundDetect
 public:
 	SoundDetect();
 	~SoundDetect();
-	void init();
+	int init();
 	double* getTimes();
 protected:
 	int timeval_subtract(struct timeval* result, struct timeval* x, struct timeval* y);
