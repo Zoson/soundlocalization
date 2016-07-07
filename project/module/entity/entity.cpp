@@ -44,7 +44,7 @@ string Location::toJsonString()
  //    string json = fwriter->write(*root);
  //    root->clear();
 	stringstream ss ;
-	ss<<"{\"x\":"<<x<<",\"y\":"<<y<<"}";
+	ss<<"{\"x\":"<<x<<",\"y\":"<<y<<",\"time1\":"<<time1<<",\"time2\":"<<time2<<",\"time3\":"<<time3<<"}";
 	string json = ss.str();
     return json;
 }

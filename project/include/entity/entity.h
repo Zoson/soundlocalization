@@ -72,11 +72,38 @@ public:
 	{
 		return y;
 	}
+	void setTime1(double t)
+	{
+		time1 = t;
+	}
+	void setTime2(double t)
+	{
+		time2 = t;
+	}
+	void setTime3(double t)
+	{
+		time3 = t;
+	}
+	double getTime1()
+	{
+		return time1;
+	}
+	double getTime2()
+	{
+		return time2;
+	}
+	double getTime3()
+	{
+		return time3;
+	}
 	void initJson(char* json);
 	string toJsonString();
 private:
 	double x;
 	double y;
+	double time1;
+	double time2;
+	double time3;
 };
 
 class Dimension:public Entity
