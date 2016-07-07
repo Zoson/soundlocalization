@@ -48,9 +48,20 @@ void SoundDetect::init()
 
 double* SoundDetect::getTimes()
 {
+	int r;
+	struct timeval time0;
+	struct timeval time1;
+	struct timeval time2;
+	struct timeval time3;
+	struct timeval diff1;
+	struct timeval diff2;
+	struct timeval diff3;
+	int time_diff1;
+	int time_diff2;
+	int time_diff3;
 	while(ok)
 	{
-		for (i = 0; i < 4; i++)
+		for (int i = 0; i < 4; i++)
 		{
 			if (ready[i] == 1) continue;
 			command[1] = aout++;
