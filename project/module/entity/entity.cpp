@@ -1,6 +1,7 @@
 #include "entity/entity.h"
 #include <string.h>
 #include "json/json.h"
+#include <sstream>
 using namespace std;
 
 Json::Reader * Entity::reader = new Json::Reader();
@@ -38,10 +39,13 @@ void Location::initJson(char* json)
 //template<class Type>
 string Location::toJsonString()
 {
-	(*root)["x"] = Json::Value(x);
-    (*root)["y"] = Json::Value(y);
-    string json = fwriter->write(*root);
-    root->clear();
+	// (*root)["x"] = Json::Value(x);
+ //    (*root)["y"] = Json::Value(y);
+ //    string json = fwriter->write(*root);
+ //    root->clear();
+	stringstream ss ;
+	ss<<"{\"x\":"<<x<<",\"y\":"<<y<<"}";
+	string json = ss.str();
     return json;
 }
 
