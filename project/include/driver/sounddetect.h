@@ -1,6 +1,5 @@
 #ifndef _SOUNDDETECT_H
 #define _SOUNDDETECT_H
-struct timeval;
 class SoundDetect
 {
 public:
@@ -8,18 +7,10 @@ public:
 	~SoundDetect();
 	void init();
 	double* getTimes();
+protected:
+	int timeval_subtract(struct timeval* result, struct timeval* x, struct timeval* y);
 private:
 	double time[3];
-	struct timeval time0;
-	struct timeval time1;
-	struct timeval time2;
-	struct timeval time3;
-	struct timeval diff1;
-	struct timeval diff2;
-	struct timeval diff3;
-	int time_diff1;
-	int time_diff2;
-	int time_diff3;
 	int fd;
 	int aout;
 	unsigned char command[2];
