@@ -11,7 +11,7 @@ int main()
 	// SLocManager slm;
 	// slm.initThread();
 	// return 0;
-	Calculoc c;
+	CalcuLoc c;
 	SoundDetect s;
 	s.init();
 	while(1)
