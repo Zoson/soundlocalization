@@ -1,10 +1,10 @@
 CC=g++
-DIR=/home/zoson/soundlocalization/project/
+DIR=$(shell pwd)/
 INCLUDE=$(DIR)include
 SUBDIRS=module domain
 BIN=myapp
 OBJS_DIR=$(DIR)obj/
-BIN_DIR=$(DIR)/
+BIN_DIR=$(DIR)
 export CC SUBDIRS BIN BIN_DIR INCLUDE OBJS_DIR
 
 all:CHECK_DIR $(SUBDIRS)

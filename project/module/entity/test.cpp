@@ -9,7 +9,7 @@ int main()
 	packet.setData("start");
 	string cs = packet.toJsonString();
 	cout<<"Packet json "<<cs<<" addr "<<&cs<<endl;
-	Location location ;
+	Location<int> location ;
 	location.setX(10);
 	location.setY(20);
 	cout<<"loc :"<<location.toJsonString()<<endl;
@@ -29,7 +29,7 @@ int main()
 	cout<<"d w"<<d.getW()<<endl;
 
 	char * ls = "{\"x\":10,\"y\":20}";
-	Location l ;
+	Location<int> l ;
 	l.initJson(ls);
 	cout<<" l x"<<l.getX()<<endl;
 }

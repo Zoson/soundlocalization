@@ -6,9 +6,14 @@ class CalcuLoc
 public: 
 	CalcuLoc();
 	~CalcuLoc();
-	int* getLocation(int,int,int);
+	double* getLocation(double t2,double t3,double t4);
+protected:
+	double get_ZB(double t1);
 private:
-	int* location;
+	double location[2];
+	const double v;
+	double L;
+
 };
 
 #endif

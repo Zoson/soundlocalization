@@ -30,7 +30,7 @@ public:
 	{
 		this->flag = flag;
 	}
-	void setData(char *data)
+	void setData(const char *data)
 	{
 		string *str = new string(data);
 		this->data = str;
@@ -50,33 +50,33 @@ private:
 	int flag;
 	string *data;
 };
-template<class Type>
+//template<class Type>
 class Location:public Entity
 {
 public:
 	Location(){}
 	~Location(){}
-	void setX(Type x)
+	void setX(int x)
 	{
 		this->x = x;
 	}
-	void setY(Type y)
+	void setY(int y)
 	{
 		this->y = y;
 	}
-	Type getX()
+	int getX()
 	{
 		return x;
 	}
-	Type getY()
+	int getY()
 	{
 		return y;
 	}
 	void initJson(char* json);
 	string toJsonString();
 private:
-	Type x;
-	Type y;
+	int x;
+	int y;
 };
 
 class Dimension:public Entity

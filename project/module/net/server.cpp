@@ -13,6 +13,8 @@ Server::Server()
 	this->m_post = 4999;
 	this->m_client_num = 10;
 	this->m_listenfd = -1;
+	this->m_send = NULL;
+	this->able_send = false;
 	createSocket();
 	initFdSet();
 	
@@ -61,12 +63,27 @@ void Server::initFdSet()
 {
 	FD_ZERO(&m_global_rdfs);
 	FD_SET(m_listenfd,&m_global_rdfs);
+	FD_ZERO(&m_global_wdfs);
+	FD_SET(m_listenfd,&m_global_wdfs);
 	m_max_fd = m_listenfd;
 }
 
 void Server::setClient(int count)
 {
 	this->m_client_num = count;
+}
+
+void Server::sendMessage(const char* msg,int size)
+{
+	m_current_wdfs = m_global_wdfs;
+	for (int i = 0; i <= m_max_fd; ++i)
+	{
+		if(m_listenfd==i)continue;
+		if(FD_ISSET(i, &m_current_wdfs))
+		{
+			 send(i,msg,size,0);
+		}
+	}
 }
 
 void Server::startServer()
@@ -76,7 +93,8 @@ void Server::startServer()
 	while(1)
 	{
 		m_current_rdfs = m_global_rdfs;
-		if(select(m_max_fd + 1, &m_current_rdfs, NULL, NULL, NULL)<0)
+		m_current_wdfs = m_global_wdfs;
+		if(select(m_max_fd + 1, &m_current_rdfs,&m_current_wdfs,NULL, NULL)<0)
 		{
 			perror("select error.\n");
 			return ;
@@ -95,8 +113,10 @@ void Server::startServer()
 					}
 					printf("sockfd:%d\n", m_sfd);
 					FD_CLR(i, &m_current_rdfs);
+					FD_CLR(i,&m_current_wdfs);
 					m_max_fd = m_max_fd > m_sfd ? m_max_fd :m_sfd;
 					FD_SET(m_sfd, &m_global_rdfs);
+					FD_SET(m_sfd,&m_global_wdfs);
 				}else{
 					printf("read socket:%d\n", i);
 					bytes = recv(i, m_buff, sizeof(m_buff), 0);
@@ -109,13 +129,11 @@ void Server::startServer()
 						close(i);
 						continue;
 					}
-					printf("buf:%s\n", m_buff);
-					send(i, m_buff, strlen(m_buff), 0);
+					//char buf[] ="{\"data\":\"stop\",\"flag\":1}\r\n"; 
 				}
-
 			}
-	
 		}
+
 	}
 }
 

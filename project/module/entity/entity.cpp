@@ -25,18 +25,18 @@ string Packet::toJsonString()
     root->clear();
     return json;
 }
-template<class Type>
-void Location<Type>::initJson(char* json)
+//template<class Type>
+void Location::initJson(char* json)
 {
 	if(Entity::reader->parse(json,*root))
 	{
-		this->x = (Type)(*Entity::root)["x"].asDouble();
-		this->y = (Type)(*Entity::root)["y"].asDouble();
+		this->x = (*Entity::root)["x"].asDouble();
+		this->y = (*Entity::root)["y"].asDouble();
 		root->clear();
 	}
 }
-template<class Type>
-string Location<Type>::toJsonString()
+//template<class Type>
+string Location::toJsonString()
 {
 	(*root)["x"] = Json::Value(x);
     (*root)["y"] = Json::Value(y);

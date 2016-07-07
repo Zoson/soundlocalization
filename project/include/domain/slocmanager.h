@@ -22,9 +22,7 @@ private:
 	Server *m_Server;
 	CalcuLoc *m_calculoc;
 	SoundDetect *m_detect;
-	
-	sem_t sem_loc_time;
-	sem_t sem_loc_info;
+
 	pthread_mutex_t mutex_loc_time;
 	pthread_mutex_t mutex_loc_info;
 
