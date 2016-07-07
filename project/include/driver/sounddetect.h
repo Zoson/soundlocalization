@@ -1,5 +1,6 @@
 #ifndef _SOUNDDETECT_H
 #define _SOUNDDETECT_H
+struct timeval;
 class SoundDetect
 {
 public:
