@@ -46,7 +46,7 @@ void SLocManager::runSoundDetect()
 	m_detect->init();
 	while(true)
 	{
-		double times = m_detect->getTimes();
+		double* times = m_detect->getTimes();
 		double location = m_calculoc->getLocation(times[0],times[1],times[2]);
 		Location loc;
 		Packet packet;
