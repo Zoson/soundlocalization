@@ -69,6 +69,14 @@ void Server::setClient(int count)
 	this->m_client_num = count;
 }
 
+void Server::sendMessage(char* msg,int count)
+{
+	for(int i=0;i<=m_max_fd;i++)
+	{
+		send(i, msg, count, 0);
+	}
+}
+
 void Server::startServer()
 {
 	int bytes = 0;
@@ -109,7 +117,7 @@ void Server::startServer()
 						close(i);
 						continue;
 					}
-					printf("buf:%s\n", m_buff);
+					printf("send buf:%s\n", m_buff);
 					send(i, m_buff, strlen(m_buff), 0);
 				}
 

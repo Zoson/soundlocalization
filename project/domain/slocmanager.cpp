@@ -37,26 +37,32 @@ void SLocManager::initThread()
 
 void SLocManager::runServer()
 {
-
+	cout<<"runServer"<<endl;
+	m_Server->startServer();
 }
 
 void SLocManager::runSoundDetect()
 {
-	for (int i = 0; i < 10; ++i)
-	{
-
-		int * a = m_detect->getTimes();
-		printf("time1:%d time2:%d time3:%d\n", a[0],a[1],a[2]);
-	}
+	// for (int i = 0; i < 10; ++i)
+	// {
+	// 	int * a = m_detect->getTimes();
+	// }
 }
 
 void SLocManager::runCalcuLoc()
 {
-	for (int i = 0; i < 10; ++i)
-	{
-		int * a = m_calculoc->getLocation(1000+3*i,20+i*i,20+i*i*i/3);;
-		printf("x:%d y:%d\n", a[0],a[1]);
-	}
+	char *msg = "abc";
+	// while(true)
+	// {
+	// 	sleep(1);
+	// 	//printf("runCalcuLoc %s\n", msg);
+	// 	m_Server->sendMessage(msg,3);
+	// }
+	// for (int i = 0; i < 10; ++i)
+	// {
+	// 	int * a = m_calculoc->getLocation(1000+3*i,20+i*i,20+i*i*i/3);;
+	// 	printf("x:%d y:%d\n", a[0],a[1]);
+	// }
 }
 
 void* SLocManager::startServerThread(void *arg)

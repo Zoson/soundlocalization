@@ -23,6 +23,7 @@ public:
 	void startServer();
 	void setPost(int post);
 	void setClient(int count);
+	void sendMessage(char* msg,int count);
 protected:
 	void createSocket();
 	void initFdSet();
