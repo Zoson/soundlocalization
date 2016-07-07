@@ -130,7 +130,7 @@ double* SoundDetect::getTimes()
 	time[0] = time_diff1 / 1000000.0;
 	time[1] = time_diff2 / 1000000.0;
 	time[2] = time_diff3 / 1000000.0;
-	printf("SoundDetect::getTimes t1:%lf t2:%lf t3:%lf | ", time[0],time[1],time[2]);
+	printf("SoundDetect::getTimes t1:%lf t2:%lf t3:%lf\n", time[0],time[1],time[2]);
 	refresh();
 	return time;
 }
