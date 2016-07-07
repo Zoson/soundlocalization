@@ -59,21 +59,11 @@ void SLocManager::runSoundDetect()
 		m_Server->sendMessage(pack.data(),strlen(pack.data()));
 		printf("loc %s\n pack %s",str.data(),pack.data());
 	}
-	// for (int i = 0; i < 10; ++i)
-	// {
-
-	// 	int * a = m_detect->getTimes();
-	// 	printf("time1:%d time2:%d time3:%d\n", a[0],a[1],a[2]);
-	// }
 }
 
 void SLocManager::runCalcuLoc()
 {
-	// for (int i = 0; i < 10; ++i)
-	// {
-	// 	int * a = m_calculoc->getLocation(1000+3*i,20+i*i,20+i*i*i/3);;
-	// 	printf("x:%d y:%d\n", a[0],a[1]);
-	// }
+
 }
 
 void* SLocManager::startServerThread(void *arg)

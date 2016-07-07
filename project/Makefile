@@ -2,7 +2,7 @@ CC=g++
 DIR=$(shell pwd)/
 INCLUDE=$(DIR)include
 SUBDIRS=module domain
-BIN=myapp
+BIN=main
 OBJS_DIR=$(DIR)obj/
 BIN_DIR=$(DIR)
 export CC SUBDIRS BIN BIN_DIR INCLUDE OBJS_DIR
@@ -16,4 +16,4 @@ ECHO:
 	@echo $(SUBDIRS)
 	@echo begin complie
 clean:
-	rm $(OBJS_DIR)*.o
+	rm $(OBJS_DIR)*.o $(BIN_DIR)$(BIN)
