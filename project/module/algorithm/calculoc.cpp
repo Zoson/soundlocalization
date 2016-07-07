@@ -1,6 +1,7 @@
 #include "algorithm/calculoc.h"
 #include "unistd.h"
 #include <math.h>
+#include <stdio.h>
 CalcuLoc::CalcuLoc():v(3400.0),L(1.0)
 {
 	location[0] = 0.0;
