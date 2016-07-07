@@ -24,7 +24,7 @@ SoundDetect::~SoundDetect()
 	close(fd);
 }
 
-void SoundDetect::init()
+int SoundDetect::init()
 {
 	initscr();
 	noecho();
