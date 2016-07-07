@@ -47,12 +47,12 @@ void SLocManager::runSoundDetect()
 	while(true)
 	{
 		double times = m_detect->getTimes();
-		double loc = m_calculoc->getLocation(times[0],times[1],times[2]);
+		double location = m_calculoc->getLocation(times[0],times[1],times[2]);
 		Location loc;
 		Packet packet;
 		packet.setFlag(FLAG_LOCATION);
-		loc.setX(loc[0]*10);
-		loc.setY(loc[1]*10);
+		loc.setX(location[0]*10);
+		loc.setY(location[1]*10);
 		string str = loc.toJsonString();
 		packet.setData(str.data());
 		string pack = packet.toJsonString();
