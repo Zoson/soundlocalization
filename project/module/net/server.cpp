@@ -129,12 +129,6 @@ void Server::startServer()
 						close(i);
 						continue;
 					}
-<<<<<<< HEAD
-					//char buf[] ="{\"data\":\"stop\",\"flag\":1}\r\n"; 
-=======
-					printf("send buf:%s\n", m_buff);
-					send(i, m_buff, strlen(m_buff), 0);
->>>>>>> 839c9e75c2990f5747d6dac7ce28737058404dd1
 				}
 			}
 		}

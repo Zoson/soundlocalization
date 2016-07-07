@@ -1,5 +1,6 @@
 #include "algorithm/calculoc.h"
 #include "unistd.h"
+#include <math.h>
 CalcuLoc::CalcuLoc():v(3400.0),L(1.0)
 {
 	location[0] = 0.0;
@@ -8,7 +9,6 @@ CalcuLoc::CalcuLoc():v(3400.0),L(1.0)
 
 CalcuLoc::~CalcuLoc()
 {
-	delete location;
 }
 
 double CalcuLoc::get_ZB(double t1)
@@ -22,16 +22,16 @@ double CalcuLoc::get_ZB(double t1)
 	return k;
 }
 
-double* CalcuLoc::getLocation(double t1,double t2,double t3)
+double* CalcuLoc::getLocation(double t2,double t3,double t4)
 {
 	if (t4 - t3 + t2 == 0){
 		if (t4 - t3 == 0){
-			y = get_ZB(t3 - t2);
-			x = 0;
+			location[1] = get_ZB(t3 - t2);
+			location[0] = 0;
 		}
 		if (t2 - t3 == 0){
-			x = get_ZB(t3 - t4);
-			y = 0;
+			location[0] = get_ZB(t3 - t4);
+			location[1] = 0;
 		}
 	}
 	else{
