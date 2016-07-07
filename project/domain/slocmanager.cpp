@@ -51,9 +51,9 @@ void SLocManager::runSoundDetect()
 		Location loc;
 		Packet packet;
 		packet.setFlag(FLAG_LOCATION);
-		loc.setX(location[0]*10);
+		loc.setX(location[0]);
 		printf("x:%lf\n", location[0]);
-		loc.setY(location[1]*10);
+		loc.setY(location[1]);
 		string str = loc.toJsonString();
 		packet.setData(str.data());
 		string pack = packet.toJsonString();
