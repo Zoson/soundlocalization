@@ -7,17 +7,7 @@
 using namespace std;
 int main()
 {
-
-	// SLocManager slm;
-	// slm.initThread();
-	// return 0;
-	CalcuLoc c;
-	SoundDetect s;
-	s.init();
-	while(1)
-	{
-		double *times = s.getTimes();
-		double * loc = c.getLocation(times[0],times[1],times[2]);
-		cout<<"x:"<<loc[0]<<" y:"<<loc[1]<<endl;
-	}
+	SLocManager slm;
+	slm.initThread();
+	return 0;
 }

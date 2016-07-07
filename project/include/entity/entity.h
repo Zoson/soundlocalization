@@ -56,27 +56,27 @@ class Location:public Entity
 public:
 	Location(){}
 	~Location(){}
-	void setX(int x)
+	void setX(double x)
 	{
 		this->x = x;
 	}
-	void setY(int y)
+	void setY(double y)
 	{
 		this->y = y;
 	}
-	int getX()
+	double getX()
 	{
 		return x;
 	}
-	int getY()
+	double getY()
 	{
 		return y;
 	}
 	void initJson(char* json);
 	string toJsonString();
 private:
-	int x;
-	int y;
+	double x;
+	double y;
 };
 
 class Dimension:public Entity

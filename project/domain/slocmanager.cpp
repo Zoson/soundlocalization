@@ -43,21 +43,21 @@ void SLocManager::runServer()
 
 void SLocManager::runSoundDetect()
 {
-	sleep(5);
-	for(int i=0;i<100;i++)
+	m_detect->init();
+	while(true)
 	{
-		sleep(4);
+		double times = m_detect->getTimes();
+		double loc = m_calculoc->getLocation(times[0],times[1],times[2]);
 		Location loc;
 		Packet packet;
 		packet.setFlag(FLAG_LOCATION);
-		loc.setX(200+(i%5)*80);
-		loc.setY(200+i*20);
+		loc.setX(loc[0]*10);
+		loc.setY(loc[1]*10);
 		string str = loc.toJsonString();
 		packet.setData(str.data());
 		string pack = packet.toJsonString();
 		pack = pack+"\n";
 		m_Server->sendMessage(pack.data(),strlen(pack.data()));
-		printf("loc %s\n pack %s",str.data(),pack.data());
 	}
 }
 
