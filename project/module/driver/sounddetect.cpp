@@ -24,6 +24,26 @@ SoundDetect::~SoundDetect()
 	close(fd);
 }
 
+int SoundDetect::timeval_subtract(struct timeval* result, struct timeval* x, struct timeval* y)
+{
+	int nsec;
+
+	result->tv_sec = (y->tv_sec - x->tv_sec);
+	result->tv_usec = (y->tv_usec - x->tv_usec);
+	while (result->tv_sec < 0)
+	{
+		result->tv_sec++;
+		result->tv_usec -= 1000000;
+	}
+
+	while (result->tv_sec > 0)
+	{
+		result->tv_sec--;
+		result->tv_usec += 1000000;
+	}
+	return 0;
+}
+
 int SoundDetect::init()
 {
 	initscr();
