@@ -96,7 +96,7 @@ void Server::startServer()
 		m_current_wdfs = m_global_wdfs;
 		if(select(m_max_fd + 1, &m_current_rdfs,&m_current_wdfs,NULL, NULL)<0)
 		{
-			perror("select error.\n");
+			perror("select error.");
 			return ;
 		}
 
