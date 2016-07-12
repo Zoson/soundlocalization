@@ -2,10 +2,11 @@
 #define _SOUND_LOCATION_H_
 #include <pthread.h>
 #include <semaphore.h>
+#include "net/callback.h"
 class Server;
 class CalcuLoc;
 class SoundDetect;
-class ServerCallback;
+//class ServerCallback;
 class SLocManager:public ServerCallback
 {
 public:
