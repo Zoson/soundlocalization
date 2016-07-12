@@ -37,8 +37,14 @@ void SLocManager::initThread()
 	pthread_join(pt_computelocation,NULL);
 }
 
+void SLocManager::getClientMessage(char *buf,int size)
+{
+	printf("slocManage %s\n",buf );
+}
+
 void SLocManager::runServer()
 {
+	this->m_Server->setCallback(this);
 	m_Server->startServer();
 }
 

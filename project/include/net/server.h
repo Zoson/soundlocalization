@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+class ServerCallback;
+
 class Server
 {
 public:
@@ -24,6 +26,7 @@ public:
 	void setPost(int post);
 	void setClient(int count);
 	void sendMessage(const char* msg,int size);
+	void setCallback(ServerCallback* callback);
 protected:
 	void createSocket();
 	void initFdSet();
@@ -45,6 +48,8 @@ private:
 	char *m_send;
 	int m_send_size;
 	bool able_send;
+
+	ServerCallback* m_callback;
 };
 
 

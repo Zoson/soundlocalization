@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "net/server.h"
-
+#include "net/callback.h"
 Server::Server()
 {
 	this->m_post = 5000;
@@ -17,7 +17,12 @@ Server::Server()
 	this->able_send = false;
 	createSocket();
 	initFdSet();
-	
+	m_callback = NULL;
+}
+
+void Server::setCallback(ServerCallback *callback)
+{
+	this->m_callback = callback;
 }
 
 Server::~Server()
@@ -126,9 +131,15 @@ void Server::startServer()
 						return ;
 					}
 					if(bytes == 0){
+						printf("Server rec byte 0\n");
 						FD_CLR(i, &m_global_rdfs);
+						FD_CLR(i, &m_global_wdfs);
 						close(i);
 						continue;
+					}
+					if(m_callback!=NULL)
+					{
+						m_callback->getClientMessage(m_buff,bytes);
 					}
 					printf("Server rec %s\n", m_buff);
 				}

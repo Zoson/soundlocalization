@@ -5,7 +5,8 @@
 class Server;
 class CalcuLoc;
 class SoundDetect;
-class SLocManager
+class ServerCallback;
+class SLocManager:public ServerCallback
 {
 public:
 	SLocManager();
@@ -14,6 +15,7 @@ public:
 	void runServer();
 	void runSoundDetect();
 	void runCalcuLoc();
+	void getClientMessage(char* buf,int size);
 	static void *startServerThread(void *arg);
 	static void *detectSoundThread(void *arg);
 	static void *computeLocationThread(void *arg);
