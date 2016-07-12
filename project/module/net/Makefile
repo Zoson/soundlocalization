@@ -1,11 +1,13 @@
 $(OBJS_DIR)server.o:server.cpp
 	$(CC) -c $^ -o $@ -I$(INCLUDE)
-	
-tests:tests.o server.o reader.o writer.o value.o
-	g++ -o $(OBJS_DIR)tests $(OBJS_DIR)tests.o $(OBJS_DIR)server.o reader.o writer.o value.o  -I$(INCLUDE)
 
+head=/home/zoson/soundlocalization/project/include
+tests:tests.o server.o 
+	g++ -o tests tests.o server.o -I$(head)
+server.o:server.cpp
+	g++ -o server.o -c server.cpp -I$(head)
 tests.o:tests.cpp
-	g++ -o $(OBJS_DIR)tests.o -c tests.cpp -I$(INCLUDE)
+	g++ -o tests.o -c tests.cpp -I$(head)
 
 .Phony:clean
 clean:

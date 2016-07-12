@@ -10,7 +10,7 @@
 
 Server::Server()
 {
-	this->m_post = 4999;
+	this->m_post = 5000;
 	this->m_client_num = 10;
 	this->m_listenfd = -1;
 	this->m_send = NULL;
@@ -129,6 +129,8 @@ void Server::startServer()
 						close(i);
 						continue;
 					}
+					char msg[] = "abc\n";
+					send(i,msg,sizeof(msg),0);
 				}
 			}
 		}
