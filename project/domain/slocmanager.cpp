@@ -6,8 +6,9 @@
 #include <iostream>
 #include "algorithm/calculoc.h"
 #include "driver/sounddetect.h"
-#include "stdio.h"
+#include <stdio.h>
 #include "entity/entity.h"
+#include <math.h>
 using namespace std;
 
 SLocManager::SLocManager()
@@ -47,6 +48,12 @@ void SLocManager::runSoundDetect()
 	while(true)
 	{
 		double* times = m_detect->getTimes();
+		if((int)abs(times[0])>=1.0||(int)abs(times[1])>=1.0||(int)abs(times[2])>=1.0)
+		{
+			printf("times >1.0\n");
+			continue;
+		
+		}
 		double *location = m_calculoc->getLocation(times[0],times[1],times[2]);
 		Location loc;
 		Packet packet;
@@ -62,6 +69,7 @@ void SLocManager::runSoundDetect()
 		pack = pack+"\n";
 		m_Server->sendMessage(pack.data(),strlen(pack.data()));
 		printf("loc: :%s\n", str.data());
+		sleep(1);
 	}
 }
 
