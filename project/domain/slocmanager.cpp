@@ -31,9 +31,7 @@ SLocManager::~SLocManager()
 void SLocManager::initThread()
 {
 	pthread_create(&pt_startserver,NULL,startServerThread,this);
-	//pthread_create(&pt_detectsound,NULL,detectSoundThread,this);
 	pthread_join(pt_startserver,NULL);
-	//pthread_join(pt_detectsound,NULL);
 }
 
 void SLocManager::getClientMessage(char *buf,int size)
@@ -43,9 +41,11 @@ void SLocManager::getClientMessage(char *buf,int size)
 	pack.initJson(buf);
 	if(pack.getFlag()==FLAG_START)
 	{
-		if(isStarted)
+		if(!isStarted)
 		{
 			printf("start SoundDetect\n");
+			pthread_create(&pt_detectsound,NULL,detectSoundThread,this);
+			pthread_join(pt_detectsound,NULL);
 		}else{
 			printf("SoundDetect is already started\n");
 		}
