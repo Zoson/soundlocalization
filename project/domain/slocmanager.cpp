@@ -31,9 +31,9 @@ SLocManager::~SLocManager()
 void SLocManager::initThread()
 {
 	pthread_create(&pt_startserver,NULL,startServerThread,this);
-	pthread_create(&pt_detectsound,NULL,detectSoundThread,this);
+	//pthread_create(&pt_detectsound,NULL,detectSoundThread,this);
 	pthread_join(pt_startserver,NULL);
-	pthread_join(pt_detectsound,NULL);
+	//pthread_join(pt_detectsound,NULL);
 }
 
 void SLocManager::getClientMessage(char *buf,int size)
