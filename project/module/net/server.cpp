@@ -128,7 +128,10 @@ void Server::startServer()
 					bytes = recv(i, m_buff, sizeof(m_buff), 0);
 					if(bytes < 0){
 						perror("recv error.\n");
-						return ;
+						FD_CLR(i, &m_global_rdfs);
+						FD_CLR(i, &m_global_wdfs);
+						continue;
+						//return ;
 					}
 					if(bytes == 0){
 						printf("Server rec byte 0\n");
