@@ -81,6 +81,8 @@ double* SoundDetect::getTimes()
 	int time_diff3;
 	while(ok)
 	{
+#pragma omp_set_num_threads(4);
+		#pragma omp for
 		for (int i = 0; i < 4; i++)
 		{
 			if (ready[i] == 1) continue;
@@ -88,7 +90,7 @@ double* SoundDetect::getTimes()
 			command[0] = 0x40 | ((i + 1) & 0x03); // output enable | read input i
 			r = write(fd, &command, 2);
 			r = read(fd, &value[i], 1);
-			if (value[i] > 200)
+			if (value[i] > 180)
 			{
 				switch (i)
 				{

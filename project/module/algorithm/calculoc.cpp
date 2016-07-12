@@ -2,7 +2,7 @@
 #include "unistd.h"
 #include <math.h>
 #include <stdio.h>
-CalcuLoc::CalcuLoc():v(3400.0),L(1.0)
+CalcuLoc::CalcuLoc():v(340.0),L(0.5)
 {
 	location[0] = 0.0;
 	location[1] = 0.0;
