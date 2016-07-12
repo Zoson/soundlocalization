@@ -46,11 +46,11 @@ int SoundDetect::timeval_subtract(struct timeval* result, struct timeval* x, str
 
 int SoundDetect::init()
 {
-	initscr();
-	noecho();
-	cbreak();
-	nodelay(stdscr, true);
-	curs_set(0);
+	// initscr();
+	// noecho();
+	// cbreak();
+	// nodelay(stdscr, true);
+	// curs_set(0);
 	fd = open("/dev/i2c-1", O_RDWR);
 	if (fd < 0)
 	{
