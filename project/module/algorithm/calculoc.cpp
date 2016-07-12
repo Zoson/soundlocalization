@@ -40,6 +40,5 @@ double* CalcuLoc::getLocation(double t2,double t3,double t4)
 		location[0] = v*v*t2*(t3*(t3 - t2) - t4*(t4 - t2)) / k;
 		location[1] = v*v*t4*(t3*(t3 - t4) - t2*(t2 - t4)) / k;
 	}
-	printf("CalcuLoc::getLocation x:%lf y:%lf\n",location[0],location[1] );
 	return location;
 }

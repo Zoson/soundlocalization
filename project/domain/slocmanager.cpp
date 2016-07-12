@@ -68,7 +68,7 @@ void SLocManager::runSoundDetect()
 		string pack = packet.toJsonString();
 		pack = pack+"\n";
 		m_Server->sendMessage(pack.data(),strlen(pack.data()));
-		printf("loc: :%s\n", str.data());
+		printf("loc: :%s", str.data());
 		sleep(1);
 	}
 }

@@ -81,7 +81,7 @@ void Server::sendMessage(const char* msg,int size)
 		if(m_listenfd==i)continue;
 		if(FD_ISSET(i, &m_current_wdfs))
 		{
-			 send(i,msg,size,0);
+			send(i,msg,size,0);
 		}
 	}
 }
@@ -117,6 +117,7 @@ void Server::startServer()
 					m_max_fd = m_max_fd > m_sfd ? m_max_fd :m_sfd;
 					FD_SET(m_sfd, &m_global_rdfs);
 					FD_SET(m_sfd,&m_global_wdfs);
+					printf("Server accept client %s\n",m_client->sa_data );
 				}else{
 					printf("read socket:%d\n", i);
 					bytes = recv(i, m_buff, sizeof(m_buff), 0);
@@ -129,8 +130,7 @@ void Server::startServer()
 						close(i);
 						continue;
 					}
-					char msg[] = "abc\n";
-					send(i,msg,sizeof(msg),0);
+					printf("Server rec %s\n", m_buff);
 				}
 			}
 		}
