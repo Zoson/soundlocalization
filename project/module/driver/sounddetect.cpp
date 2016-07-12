@@ -132,6 +132,6 @@ double* SoundDetect::getTimes()
 	time[0] = time_diff1 / 1000000.0;
 	time[1] = time_diff2 / 1000000.0;
 	time[2] = time_diff3 / 1000000.0;
-	refresh();
+	//refresh();
 	return time;
 }
