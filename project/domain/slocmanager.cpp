@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "entity/entity.h"
 #include <math.h>
+#include "net/callback.h"
 using namespace std;
 
 SLocManager::SLocManager()
