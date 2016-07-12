@@ -12,7 +12,7 @@
 #include "net/callback.h"
 using namespace std;
 
-SLocManager::SLocManager()
+SLocManager::SLocManager():isStarted(false)
 {
 	m_Server = new Server();
 	m_calculoc = new CalcuLoc();
@@ -32,18 +32,26 @@ void SLocManager::initThread()
 {
 	pthread_create(&pt_startserver,NULL,startServerThread,this);
 	pthread_create(&pt_detectsound,NULL,detectSoundThread,this);
-	pthread_create(&pt_computelocation,NULL,computeLocationThread,this);
 	pthread_join(pt_startserver,NULL);
 	pthread_join(pt_detectsound,NULL);
-	pthread_join(pt_computelocation,NULL);
 }
 
 void SLocManager::getClientMessage(char *buf,int size)
 {
 	printf("slocManage %s\n",buf );
-	// Packet pack;
-	// pack.initJson(buf);
-	// pack
+	Packet pack;
+	pack.initJson(buf);
+	if(pack.getFlag()==FLAG_START)
+	{
+		if(isStarted)
+		{
+			printf("start SoundDetect\n");
+		}else{
+			printf("SoundDetect is already started\n");
+		}
+	}else if (pack.getFlag()==FLAG_STOP){
+		printf("stop SoundDetect\n");
+	}
 }
 
 void SLocManager::runServer()
@@ -84,10 +92,6 @@ void SLocManager::runSoundDetect()
 	}
 }
 
-void SLocManager::runCalcuLoc()
-{
-
-}
 
 void* SLocManager::startServerThread(void *arg)
 {
@@ -102,8 +106,3 @@ void* SLocManager::detectSoundThread(void *arg)
 	
 }
 
-void* SLocManager::computeLocationThread(void *arg)
-{
-	SLocManager *s = (SLocManager*)arg;
-	s->runCalcuLoc();
-}

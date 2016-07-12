@@ -22,6 +22,7 @@ public:
 	static void *computeLocationThread(void *arg);
 	
 private:
+	bool isStarted;
 	Server *m_Server;
 	CalcuLoc *m_calculoc;
 	SoundDetect *m_detect;
