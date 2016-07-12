@@ -14,7 +14,7 @@ CalcuLoc::~CalcuLoc()
 
 double CalcuLoc::get_ZB(double t1)
 {
-	double v1 = 3400.0;
+	double v1 = 34000.0;
 	double a = 4 * v1*v1*t1*t1 - 4;
 	double b = 4 * v1*v1*v1*t1*t1*t1 - 4 * v1*t1;
 	double c = v1*v1*v1*v1*t1*t1*t1*t1 - 2 * v1*v1*t1*t1 + 2;
