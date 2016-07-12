@@ -36,7 +36,6 @@ void SLocManager::initThread()
 
 void SLocManager::getClientMessage(char *buf,int size)
 {
-	printf("slocManage %s\n",buf );
 	Packet pack;
 	pack.initJson(buf);
 	if(pack.getFlag()==FLAG_START)
@@ -50,7 +49,7 @@ void SLocManager::getClientMessage(char *buf,int size)
 			printf("SoundDetect is already started\n");
 		}
 	}else if (pack.getFlag()==FLAG_STOP){
-		printf("stop SoundDetect\n");
+		isStarted=false;
 	}
 }
 
@@ -63,7 +62,7 @@ void SLocManager::runServer()
 void SLocManager::runSoundDetect()
 {
 	m_detect->init();
-	while(true)
+	while(isStarted)
 	{
 		double* times = m_detect->getTimes();
 		if((int)abs(times[0])>=1.0||(int)abs(times[1])>=1.0||(int)abs(times[2])>=1.0)
@@ -89,6 +88,7 @@ void SLocManager::runSoundDetect()
 		printf("loc::%s\n", str.data());
 		sleep(1);
 	}
+	printf("stop SoundDetect\n");
 }
 
 
