@@ -117,7 +117,7 @@ void Server::startServer()
 					m_max_fd = m_max_fd > m_sfd ? m_max_fd :m_sfd;
 					FD_SET(m_sfd, &m_global_rdfs);
 					FD_SET(m_sfd,&m_global_wdfs);
-					printf("Server accept client %s\n",m_client->sa_data );
+					printf("Server accept client %d\n",i);
 				}else{
 					printf("read socket:%d\n", i);
 					bytes = recv(i, m_buff, sizeof(m_buff), 0);
