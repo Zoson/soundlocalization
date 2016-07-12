@@ -36,7 +36,7 @@ void SLocManager::initThread()
 
 void SLocManager::getClientMessage(char *buf,int size)
 {
-	printf("SLocManager rec from server :: %s\n", buf);
+	printf("SLocManager rec from server :: %s ", buf);
 	Packet pack;
 	pack.initJson(buf);
 	if(pack.getFlag()==FLAG_START)
