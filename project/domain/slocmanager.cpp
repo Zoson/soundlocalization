@@ -42,6 +42,7 @@ void SLocManager::getClientMessage(char *buf,int size)
 	{
 		if(!isStarted)
 		{
+			isStarted = true;
 			printf("start SoundDetect\n");
 			pthread_create(&pt_detectsound,NULL,detectSoundThread,this);
 			pthread_join(pt_detectsound,NULL);
