@@ -144,7 +144,6 @@ void Server::startServer()
 					{
 						m_callback->getClientMessage(m_buff,bytes);
 					}
-					printf("Server rec %s\n", m_buff);
 				}
 			}
 		}

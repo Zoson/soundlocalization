@@ -41,6 +41,9 @@ void SLocManager::initThread()
 void SLocManager::getClientMessage(char *buf,int size)
 {
 	printf("slocManage %s\n",buf );
+	// Packet pack;
+	// pack.initJson(buf);
+	// pack
 }
 
 void SLocManager::runServer()
@@ -76,7 +79,8 @@ void SLocManager::runSoundDetect()
 		pack = pack+"\n";
 		m_Server->sendMessage(pack.data(),strlen(pack.data()));
 		sleep(1);
-		printf("loc: :%s\n", str.data());
+		printf("loc::%s", str.data());
+		printf("\n");
 	}
 }
 
